@@ -34,7 +34,7 @@ for repo_dict in repo_dicts:
     stars.append(repo_dict["stargazers_count"])
 
 # 创建悬停文本
-# 提取每个项目的所有者和藐视
+# 提取每个项目的所有者和描述
     owner = repo_dict["owner"]["login"]
     description = repo_dict["description"]
     # plotly可以使用HTML代码

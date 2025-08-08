@@ -33,6 +33,11 @@ for repo_dict in repo_dicts:
     repo_names.append(repo_dict["name"])
     stars.append(repo_dict["stargazers_count"])
 
+#     使用x轴作为标签
+    repo_url = repo_dict['html_url']
+    repo_link = f"<a href='{repo_url}'>{repo_dict['name']}</a>"
+    repo_links.append(repo_link)
+
 # 创建悬停文本
 # 提取每个项目的所有者和描述
     owner = repo_dict["owner"]["login"]
@@ -41,6 +46,10 @@ for repo_dict in repo_dicts:
     hover_text = [f"{owner}<br />{description}"]
     hover_texts.append(hover_text)
 #     hover_name参数把悬停给到可视化
-fig = px.bar(x = repo_names, y = stars,title=title, labels=labels,hover_name=hover_texts)
+
+title = "Most-Starred Python Projects on GitHub"
+labels = {"x": "Repository", "y": "Stars"}
+
+fig = px.bar(x = repo_links, y = stars,title=title, labels=labels,hover_name=hover_texts)
 fig.update_layout(title_font_size=24,xaxis_title_font_size=18,yaxis_title_font_size=16)
 fig.show()

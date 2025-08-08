@@ -28,7 +28,7 @@ labels = {"x": "Repository", "y": "Stars"}
 
 # 添加鼠标提示
 repo_dicts = response_dict["items"]
-repo_names, stars, hover_texts = [], [], []
+repo_names, repo_links, stars, hover_texts = [], [], [], []
 for repo_dict in repo_dicts:
     repo_names.append(repo_dict["name"])
     stars.append(repo_dict["stargazers_count"])

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>生日在 π 里吗？</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; }
+        input[type=text] { padding: 10px; font-size: 16px; width: 200px; }
+        button { padding: 10px 20px; font-size: 16px; }
+        .result { margin-top: 30px; font-size: 18px; }
+        .context { background: #f0f0f0; padding: 10px; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h1>你的生日在 π 的前10万位中吗？</h1>
+    <form method="POST">
+        <input type="text" name="birthday" placeholder="例如 0405" value="{{ birthday }}">
+        <button type="submit">查找</button>
+    </form>
+
+    <div class="result">
+        {% if result %}
+            {% if result.found %}
+                <p>🎉 匹配成功！你的生日出现在第 <strong>{{ result.position }}</strong> 位</p>
+                <div class="context">...{{ result.context }}...</div>
+            {% else %}
+                <p>❌ 匹配失败，你的生日未出现在前10万位 π 中。</p>
+            {% endif %}
+        {% endif %}
+    </div>
+</body>
+</html>

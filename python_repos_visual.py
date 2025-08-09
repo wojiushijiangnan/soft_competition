@@ -23,9 +23,6 @@ for repo_dict in repo_dicts:
     stars.append(repo_dict["stargazers_count"])
 
 # 可视化
-title = "Most-Starred Python Projects on GitHub"
-labels = {"x": "Repository", "y": "Stars"}
-
 # 添加鼠标提示
 repo_dicts = response_dict["items"]
 repo_names, repo_links, stars, hover_texts = [], [], [], []
@@ -50,6 +47,10 @@ for repo_dict in repo_dicts:
 title = "Most-Starred Python Projects on GitHub"
 labels = {"x": "Repository", "y": "Stars"}
 
+
 fig = px.bar(x = repo_links, y = stars,title=title, labels=labels,hover_name=hover_texts)
 fig.update_layout(title_font_size=24,xaxis_title_font_size=18,yaxis_title_font_size=16)
+# 。修改条形颜色 opacity透明度
+fig.update_traces(marker_color='SteelBlue',marker_opacity=0.6)
+
 fig.show()
